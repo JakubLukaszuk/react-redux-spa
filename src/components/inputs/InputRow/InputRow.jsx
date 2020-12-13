@@ -23,7 +23,7 @@ const InputRow = (props) => {
             {invalidMessage}
           </Form.Control.Feedback>
         </Col>
-        <Col sm={2}>
+        <Col>
             <Alert variant= {!isValid && toutched ? 'danger' : 'success'}/>
         </Col>
       </Form.Group>

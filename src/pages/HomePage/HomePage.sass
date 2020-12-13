@@ -1,0 +1,53 @@
+.homePageContainer
+    position: relative
+    width: 100%
+    height: calc( 100vh - 50px)
+    margin: 0 auto
+    overflow: hidden
+    &::after
+        content: ''
+        position: absolute
+        background-color: #3e79c7cc
+        padding-bottom: 120%
+        width: 100%
+        bottom: 0
+        left: 0
+        transform: rotate(70.5deg)
+        transform-origin: left bottom
+    &::before
+        content: ''
+        position: absolute
+        background-color: #dddddd
+        padding-bottom: 200%
+        width: 100%
+        bottom: 0
+        left: 0
+        transform: rotate(35.5deg)
+        transform-origin: left bottom
+    &__rectangle
+        content: ''
+        position: absolute
+        background-color: #6580bb
+        padding-bottom: 100%
+        width: 100%
+        bottom: 0
+        left: 0
+        transform: rotate(60.5deg)
+        transform-origin: right bottom
+        z-index: 1
+        @media (max-width: 576px)
+            transform-origin: left top
+            width: 200%
+    &__content
+        width: 90%
+        position: absolute
+        z-index: 2
+        top: 40%
+        left: 50%
+        transform: translate(-50%, -50%)
+        &__title
+            margin-bottom: 20px
+            @media (max-width: 576px)
+                margin-bottom: 40px
+
+
