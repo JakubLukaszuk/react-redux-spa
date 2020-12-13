@@ -1,11 +1,11 @@
 import React from 'react'
 
-const NotFound = () => {
+const HomePage = () => {
     return (
         <div>
-            NotFound
+            Home
         </div>
     )
 }
 
-export default NotFound
+export default HomePage

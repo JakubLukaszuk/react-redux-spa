@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import {withRouter} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import {checkValidity, canBeValue, canBeName, IsInteger} from '../../utils/validation';
 import UserInputRows from './UsersInfoRows/UserInputRows';
-import { useSelector, useDispatch } from 'react-redux';
 import {
   selectUserData,
   setUserData
 } from '../../slices/userSlice';
 
-// import * as ROUTES from '../../constants/routes';
-
+import * as ROUTES from '../../constants/routes';
 
 import {
     Form,
@@ -65,7 +65,9 @@ const INITIAL_INPUTS_STATE = {
   }
 }
 
-const UserInfoForm = () => {
+const UserInfoForm = (props) => {
+  const {history} = props
+
   const userData = useSelector(selectUserData);
   const dispatch = useDispatch();
 
@@ -78,8 +80,6 @@ const UserInfoForm = () => {
     newInputState.surname.value = userData.surename;
     newInputState.age.value = userData.age;
     setInputsState(newInputState)
-    console.log(userData);
-    
   },[])
 
   const validateForm = () => {
@@ -151,6 +151,8 @@ const UserInfoForm = () => {
     if(validateForm())
     {
       saveFormValues();
+      history
+      .push(ROUTES.RESTRICTED_IMAGE);
     }
     event.preventDefault();
   }
@@ -179,4 +181,4 @@ const UserInfoForm = () => {
   )
 }
 
-export default UserInfoForm
+export default withRouter(UserInfoForm)
