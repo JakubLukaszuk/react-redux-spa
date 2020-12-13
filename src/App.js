@@ -15,7 +15,6 @@ import {
 function App() {
   const isRouteAllowed = useSelector(selectIsUserDateCompelete);
   return (
-    <div className="App">
         <MainLayout>
           <Switch>
             <Route exact path={ROUTES.HOME} component={HomePage}/>
@@ -27,7 +26,6 @@ function App() {
           <Redirect to={ROUTES.NOT_FOUND}/>
         </Switch>
         </MainLayout>
-    </div>
   );
 }
 

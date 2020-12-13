@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux'
-import {Button, Col, Row, Container, Image, Spinner, Badge, Jumbotron} from 'react-bootstrap';
+import {Button, Col, Row, Container, Image, Spinner, Badge} from 'react-bootstrap';
 import {getImageAsync} from '../../data/services/imageService';
 import {getErrorMessage} from '../../utils/error';
 import {
     selectOverEighteenYersOld,
     selectUserData
 } from '../../slices/userSlice';
+import './RestrictedImagePage.sass'
 
 const RestrictedImagePage = () => {
   const isImageAllowed = useSelector(selectOverEighteenYersOld);
@@ -32,7 +33,9 @@ const RestrictedImagePage = () => {
             const objectURL = window.URL.createObjectURL(blob);
             setImgSource(objectURL);
           }
-          setIsLoading(false);
+          setTimeout(()=>{
+            setIsLoading(false);
+          }, 1000);
         })
     }
     else
@@ -43,20 +46,31 @@ const RestrictedImagePage = () => {
 
   return (
     <Container fluid>
-            <section>
-                <Row>
+            <section className="imagePageContentWrapper">
+                <Row className="imagePageContentWrapper__userNameWrapper">
                     <Col>
                         <h2>{name} {surname}`s Page</h2>
                     </Col>
                 </Row>
                 <Row className="justify-content-center">
-                    <Button onClick= {showImageHandle}>Accces</Button>
+                    <Button size="lg" onClick= {showImageHandle}>Accces</Button>
                 </Row>
-                <Row >
+                <Row>
                     <Col>
-                        {isLoading ? <Spinner/> : imgSource && !isWarining ?
-                            <Image src={imgSource} rounded/> : error ? getErrorMessage(error) : null}
-                        {isWarining ? <Badge variant="danger">You by at least 18 years old !</Badge> : null}
+                        <div className = "imagePageContentWrapper__imageWrapper">
+                            {isLoading ?
+                            <Spinner animation="border" size="lg" className="imagePageContentWrapper__spinner"/> :
+                            imgSource && !isWarining ?
+                                <Image className="imagePageContentWrapper__imageWrapper__secredImage" src={imgSource} rounded/> :
+                                error ?
+                                <Badge className="imagePageContentWrapper__warining" variant="danger">{getErrorMessage(error)}</Badge> :
+                                null}
+                        </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        {isWarining ? <Badge className="imagePageContentWrapper__warining" variant="danger">You by at least 18 years old !</Badge> : null}
                     </Col>
                 </Row>
             </section>

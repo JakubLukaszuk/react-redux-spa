@@ -20,9 +20,13 @@ export const userInfoSlice = createSlice({
       state.userData.age = age;
 
       if(age >= 18)
-       {
+        {
           state.overEighteenYersOld = true;
-       }
+        }
+      else
+        {
+          state.overEighteenYersOld = false;
+        }
 
       if(name!= null && surname != null && age != null)
         {

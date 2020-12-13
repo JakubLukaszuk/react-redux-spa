@@ -28,26 +28,24 @@ export const checkValidity = (value, rules) => {
 
   export const canBeValue = (value, maxLength, minValue) => {
 
-    const isSpecialSings = (val) => {
+    const isNotSpecialSings = (val) => {
       return (/[`%&!^#~<>;':"/[\]|{}()=_+-e]/.test(val))
     }
 
     const canBeIntergerValue = (val) => {
-      if (isSpecialSings(val)) {
+      if (isNotSpecialSings(val)) {
         if (IsInteger(Number(val)) >= minValue || val === "") {
           return true;
         }
       }
       return false;
     }
-    // if(!isSpecialSings(value)){
     if (value.length <= maxLength) {
       if (minValue) {
         return canBeIntergerValue(value);
       }
       return isLetterOrEmpty(value)
     }
-    // }
     return false;
   }
 

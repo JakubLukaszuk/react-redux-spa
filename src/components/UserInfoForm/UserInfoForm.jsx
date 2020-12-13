@@ -161,14 +161,14 @@ const UserInfoForm = (props) => {
     <Container>
         <Form noValidate onSubmit={onSubmit} validated={inputsState.valid && inputsState.toutched}>
         <UserInputRows inputsState={inputsState} onChange = {onChange}/>
-          <Row className = "UserInfoFormRow">
+          <Row className = "UserInfoFormRow centerText">
             <Col>
               {validationMessage ?
                 <Badge variant="danger">{validationMessage}</Badge>
               : null}
             </Col>
           </Row>
-          <Row className = "UserInfoFormRow">
+          <Row className = "UserInfoFormRow centerText">
             <Col>
               {userData.name && userData.surname ?
                 <h3>{`Hello ${userData.name} ${userData.surname} !`}</h3> :

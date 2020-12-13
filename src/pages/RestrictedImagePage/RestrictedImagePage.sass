@@ -1,0 +1,40 @@
+.imagePageContentWrapper
+    text-align: center
+    margin-top: 20px
+    &__userNameWrapper
+        margin-bottom: 50px
+    &__imageWrapper
+        position: relative
+        border: 1px solid #ddd
+        background-color: #f1f1f1
+        border-radius: 4px
+        object-fit: 4px
+        margin: 10px auto
+        width: 250px
+        height: 250px
+        @media (min-width: 576px)
+            width: 350px
+            height: 350px
+        @media (min-width: 992px)
+            width: 500px
+            height: 500px
+        &__secredImage
+            width: 250px
+            height: 250px
+            position: absolute
+            top: 0
+            left: 0
+            object-fit: cover
+            @media (min-width: 576px)
+                width: 350px
+                height: 350px
+            @media (min-width: 992px)
+                width: 500px
+                height: 500px
+    &__spinner
+        position: absolute
+        top: calc( 50% - 15px)
+        left: calc( 50% - 15px)
+        //pixels used inestead of transfrom: translate to not bug animation
+    &__warining
+        margin: 15px 0
