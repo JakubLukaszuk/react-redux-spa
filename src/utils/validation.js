@@ -26,23 +26,27 @@ export const checkValidity = (value, rules) => {
     return (/^[a-zA-Z]*$/.test(val))
   }
 
-  export const canBeValue = (value, maxLength, minValue) => {
+  const isNotSpecialSings = (val) => {
+    return (/[`%&!^#~<>;':"/[\]|{}()=_+-e]/.test(val))
+  }
 
-    const isNotSpecialSings = (val) => {
-      return (/[`%&!^#~<>;':"/[\]|{}()=_+-e]/.test(val))
+  const canBeIntergerValue = (val, minValue) => {
+    if(val == "")
+    {
+      return true
     }
-
-    const canBeIntergerValue = (val) => {
-      if (isNotSpecialSings(val)) {
-        if (IsInteger(Number(val)) >= minValue || val === "") {
-          return true;
-        }
+    if (isNotSpecialSings(val)) {
+      if (IsInteger(Number(val)) >= minValue) {
+        return true;
       }
-      return false;
     }
+    return false;
+  }
+
+  export const canBeValue = (value, maxLength, minValue) => {
     if (value.length <= maxLength) {
       if (minValue) {
-        return canBeIntergerValue(value);
+        return canBeIntergerValue(value, minValue);
       }
       return isLetterOrEmpty(value)
     }
