@@ -42,30 +42,24 @@ const RestrictedImagePage = () => {
   }
 
   return (
-    <Container>
-        <Jumbotron fluid>
+    <Container fluid>
             <section>
-                <Row className="justify-content-center">
-                    <Col md="auto">
+                <Row>
+                    <Col>
                         <h2>{name} {surname}`s Page</h2>
                     </Col>
                 </Row>
-            </section>
-            <section>
                 <Row className="justify-content-center">
-                    <Button md="auto" onClick= {showImageHandle}>Accces</Button>
+                    <Button onClick= {showImageHandle}>Accces</Button>
                 </Row>
-                <Row className="justify-content-center">
-                    <Col md="auto">
-                        <div>
-                            {isLoading ? <Spinner/> : imgSource && !isWarining ?
-                                <Image src={imgSource} rounded/> : error ? getErrorMessage(error) : null}
-                            {isWarining ? <Badge variant="danger">You by at least 18 years old !</Badge> : null }
-                        </div>
+                <Row >
+                    <Col>
+                        {isLoading ? <Spinner/> : imgSource && !isWarining ?
+                            <Image src={imgSource} rounded/> : error ? getErrorMessage(error) : null}
+                        {isWarining ? <Badge variant="danger">You by at least 18 years old !</Badge> : null}
                     </Col>
                 </Row>
             </section>
-        </Jumbotron>
     </Container>
   )
 }

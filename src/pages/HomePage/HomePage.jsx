@@ -1,10 +1,10 @@
 import React from 'react'
-import './HomePage.sass'
 import { Link } from 'react-router-dom'
 import {
     Button
  } from 'react-bootstrap';
 import {USER_INFO} from '../../constants/routes'
+import './HomePage.sass'
 
 const HomePage = () => {
     return (

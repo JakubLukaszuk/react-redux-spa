@@ -1,24 +1,18 @@
 import React from 'react';
 import UserInfoForm from '../../components/UserInfoForm/UserInfoForm';
-import {useSelector} from 'react-redux'
-import {
-  selectUserData,
-} from '../../slices/userSlice';
-
 import {
     Col,
     Row,
     Container,
-    Jumbotron,
   } from 'react-bootstrap';
+import './UserInfoPage.sass'
+
 
 const UserInfoPage = () => {
-  const {name, surname} = useSelector(selectUserData)
 
   return (
     <Container>
-      <Jumbotron fluid>
-        <section>
+        <section className="userInfoTitleContainer">
           <Row>
             <Col>
               <h2>User Data</h2>
@@ -26,18 +20,10 @@ const UserInfoPage = () => {
           </Row>
         </section>
         <section>
-          <Row className="justify-content-center">
+          <Row>
             <UserInfoForm/>
           </Row>
         </section>
-        <section>
-          <Col md="auto">
-            {name && surname ?
-              <h3>{`Hello ${name} ${surname} !`}</h3> :
-              null}
-          </Col>
-        </section>
-      </Jumbotron>
     </Container>
   )
 }

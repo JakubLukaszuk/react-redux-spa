@@ -5,26 +5,27 @@ import {
     Col,
     Row
  } from 'react-bootstrap';
+ import './InputRow.sass'
 
 const InputRow = (props) => {
     const {label, value, toutched, isValid, type, placeholder, onChange, invalidMessage} = props;
     return (
       <Form.Group as={Row} >
-        <Col>
-            <Form.Label column lg={2}>
+        <Col md={2}>
+            <Form.Label column >
                 {label}
             </Form.Label>
         </Col>
-        <Col>
-          <Form.Control value = {value} type={type} placeholder= {placeholder} onChange={onChange} required
+        <Col md={8}>
+          <Form.Control value = {value} type={type} placeholder={placeholder} onChange={onChange} required
           isValid = {isValid && toutched} isInvalid={!isValid && toutched}/>
           <Form.Control.Feedback></Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
             {invalidMessage}
           </Form.Control.Feedback>
         </Col>
-        <Col>
-            <Alert variant= {!isValid && toutched ? 'danger' : 'success'}/>
+        <Col md={2}>
+            <Alert className="alertBar" variant= {!isValid && toutched ? 'danger' : 'success'}/>
         </Col>
       </Form.Group>
     )

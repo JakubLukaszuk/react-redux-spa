@@ -7,16 +7,16 @@ import {
   selectUserData,
   setUserData
 } from '../../slices/userSlice';
-
 import * as ROUTES from '../../constants/routes';
-
 import {
     Form,
     Button,
     Col,
     Row,
-    Badge
+    Badge,
+    Container,
   } from 'react-bootstrap';
+import './UserInfoForm.sass';
 
 const INITIAL_INPUTS_STATE = {
   name: {
@@ -158,26 +158,30 @@ const UserInfoForm = (props) => {
   }
 
   return (
-        <Form noValidate  onSubmit={onSubmit} validated={inputsState.valid && inputsState.toutched}>
+    <Container>
+        <Form noValidate onSubmit={onSubmit} validated={inputsState.valid && inputsState.toutched}>
         <UserInputRows inputsState={inputsState} onChange = {onChange}/>
-          <Row className="justify-content-center">
-            <Col md="auto">
-            </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col md="auto">
+          <Row className = "UserInfoFormRow">
+            <Col>
               {validationMessage ?
                 <Badge variant="danger">{validationMessage}</Badge>
               : null}
             </Col>
           </Row>
-          <br/>
-          <Row className="justify-content-center">
-            <Col md="auto">
-              <Button type="submit">Save</Button>
+          <Row className = "UserInfoFormRow">
+            <Col>
+              {userData.name && userData.surname ?
+                <h3>{`Hello ${userData.name} ${userData.surname} !`}</h3> :
+                null}
+            </Col>
+          </Row>
+          <Row className = "UserInfoFormRow__saveButtonRow">
+            <Col>
+              <Button block size="lg" type="submit">Save</Button>
             </Col>
           </Row>
         </Form>
+    </Container>
   )
 }
 

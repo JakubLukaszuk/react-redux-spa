@@ -1,7 +1,6 @@
 import React from 'react';
 import InputRow from '../../inputs/InputRow/InputRow';
 
-
 const UserInputRows = (props) => {
     const {inputsState, onChange} = props;
 
@@ -13,9 +12,9 @@ const UserInputRows = (props) => {
     return (
         <section>
             {
-                formElementsArray.map(formElement => (
-                    <React.Fragment key={formElement.id}>
+                formElementsArray.map((formElement, index) => (
                     <InputRow
+                        key={index}
                         label = {formElement.config.label}
                         type={formElement.config.elementType}
                         placeholder= {formElement.config.placeholder}
@@ -24,7 +23,6 @@ const UserInputRows = (props) => {
                         toutched={formElement.config.toutched}
                         onChange={(event) => onChange(event, formElement.id)}
                         invalidMessage = {formElement.config.invalidMessage}/>
-                    </React.Fragment>
                 ))
             }
         </section>
