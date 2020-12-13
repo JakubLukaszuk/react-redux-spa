@@ -1,7 +1,5 @@
 import React from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.sass';
 import * as ROUTES from './constants/routes';
 import MainLayout from './layouts/MainLayout';

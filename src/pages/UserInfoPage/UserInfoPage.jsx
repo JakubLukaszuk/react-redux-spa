@@ -6,14 +6,9 @@ import UserInfoForm from '../../components/UserInfoForm/UserInfoForm'
 // import {UserContext} from '../../App.js';
 
 import {
-    Form,
-    Button,
     Col,
     Row,
     Container,
-    Jumbotron,
-    Alert,
-    Badge
   } from 'react-bootstrap';
 
 const UserInfoPage = () => {

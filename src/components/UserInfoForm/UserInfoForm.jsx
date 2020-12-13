@@ -1,18 +1,20 @@
-import React, {useState, useContext} from 'react';
-//import Input from '../../components/UI/Input/Input';
+import React, {useState, useEffect} from 'react';
 import {checkValidity, canBeValue, canBeName, IsInteger} from '../../utils/validation';
 import UserInputRows from './UsersInfoRows/UserInputRows';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectUserData,
+  setUserData
+} from '../../slices/userSlice';
+
 // import * as ROUTES from '../../constants/routes';
-// import {UserContext} from '../../App.js';
+
 
 import {
     Form,
     Button,
     Col,
     Row,
-    Container,
-    Jumbotron,
-    Alert,
     Badge
   } from 'react-bootstrap';
 
@@ -64,35 +66,47 @@ const INITIAL_INPUTS_STATE = {
 }
 
 const UserInfoForm = () => {
+  const userData = useSelector(selectUserData);
+  const dispatch = useDispatch();
 
   const [inputsState, setInputsState] = useState(INITIAL_INPUTS_STATE);
   const [validationMessage, setValidationMessage] = useState(null);
 
+  useEffect(()=>{
+    const newInputState = {...inputsState};
+    newInputState.name.value = userData.name;
+    newInputState.surname.value = userData.surename;
+    newInputState.age.value = userData.age;
+    setInputsState(newInputState)
+    console.log(userData);
+    
+  },[])
+
   const validateForm = () => {
-    const newInputs ={...inputsState};
+    const newInputState = {...inputsState};
     let validationState = true;
 
     if(!canBeName(inputsState.name.value))
     {
-      newInputs.name.valid = false;
-      newInputs.name.toutched = true;
+      newInputState.name.valid = false;
+      newInputState.name.toutched = true;
       validationState = false;
     }
     if(!canBeName(inputsState.surname.value))
     {
-      newInputs.surname.valid = false;
-      newInputs.surname.toutched = true;
+      newInputState.surname.valid = false;
+      newInputState.surname.toutched = true;
       validationState = false;
     }
     const numericAge = Number(inputsState.age.value);
 
    if(!IsInteger(numericAge) || numericAge > 150 || numericAge <= 0)
     {
-      newInputs.age.valid= false;
-      newInputs.age.toutched = true;
+      newInputState.age.valid= false;
+      newInputState.age.toutched = true;
       validationState = false;
     }
-    setInputsState(newInputs);
+    setInputsState(newInputState);
     if(!validationState)
     {
         setValidationMessage("Fill all fields correctly");
@@ -123,6 +137,14 @@ const UserInfoForm = () => {
   };
 
   const saveFormValues = () => {
+    const userDataToSave = {
+      name: inputsState.name.value,
+      surename: inputsState.surname.value,
+      age: inputsState.age.value
+    }
+    dispatch(
+      setUserData(userDataToSave)
+    )
   };
 
   const onSubmit = (event) => {
