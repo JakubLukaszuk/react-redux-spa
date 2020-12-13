@@ -77,7 +77,7 @@ const UserInfoForm = (props) => {
   useEffect(()=>{
     const newInputState = {...inputsState};
     newInputState.name.value = userData.name;
-    newInputState.surname.value = userData.surename;
+    newInputState.surname.value = userData.surname;
     newInputState.age.value = userData.age;
     setInputsState(newInputState)
   },[])
@@ -139,7 +139,7 @@ const UserInfoForm = (props) => {
   const saveFormValues = () => {
     const userDataToSave = {
       name: inputsState.name.value,
-      surename: inputsState.surname.value,
+      surname: inputsState.surname.value,
       age: inputsState.age.value
     }
     dispatch(

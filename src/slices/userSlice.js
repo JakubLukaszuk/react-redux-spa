@@ -5,7 +5,7 @@ export const userInfoSlice = createSlice({
   initialState: {
     userData: {
         name: "",
-        surename: "",
+        surname: "",
         age: "",
     },
     isUserDateCompelete: false,
@@ -13,10 +13,10 @@ export const userInfoSlice = createSlice({
   },
   reducers: {
     setUserData: (state, action) => {
-      const {name, surename, age} = action.payload;
+      const {name, surname, age} = action.payload;
 
       state.userData.name = name;
-      state.userData.surename = surename;
+      state.userData.surname = surname;
       state.userData.age = age;
 
       if(age >= 18)
@@ -24,7 +24,7 @@ export const userInfoSlice = createSlice({
           state.overEighteenYersOld = true;
        }
 
-      if(name!= null && surename != null && age != null)
+      if(name!= null && surname != null && age != null)
         {
             state.isUserDateCompelete = true;
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import InputRow from '../../InputRow/InputRow';
+import InputRow from '../../inputs/InputRow/InputRow';
 
 
 const UserInputRows = (props) => {

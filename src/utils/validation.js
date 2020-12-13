@@ -57,7 +57,6 @@ export const checkValidity = (value, rules) => {
         .replace(/^\s+/, "")
         .replace(/\s+$/, "")
         .replace(/\s+/, " ")
-        console.log(name);
       if (name === "") {
         return false;
       } else {
