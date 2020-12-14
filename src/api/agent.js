@@ -1,7 +1,8 @@
 import axios from 'axios';
+import configData from '../config.json'
 
 const api = axios.create({
-    baseURL: 'https://images.pexels.com',
+    baseURL: configData.Images.ServerUrl,
     responseType: 'blob',
     timeout: 5000
   });

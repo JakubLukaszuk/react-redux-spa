@@ -31,7 +31,7 @@ export const checkValidity = (value, rules) => {
   }
 
   const canBeIntergerValue = (val, minValue) => {
-    if(val == "")
+    if(val === "")
     {
       return true
     }

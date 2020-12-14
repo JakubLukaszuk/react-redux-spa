@@ -1,6 +1,5 @@
 import React from 'react'
 import NavBar from '../components/Navigation/NavBar/NavBar'
-import RestrictedImagePage from '../pages/RestrictedImagePage/RestrictedImagePage'
 
 const MainLayout = (props) => {
   return (

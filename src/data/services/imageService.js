@@ -1,8 +1,9 @@
 import request from '../../api/agent';
+import configData from '../../config.json';
 
 export const getImageAsync = async() => {
   const data = request
-    .get('/photos/2093720/pexels-photo-2093720.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+    .get(configData.Images.LighthouseImageUrl)
     .catch(error => {
       throw error;
     })
